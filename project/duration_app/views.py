@@ -32,7 +32,17 @@ def index(request):
     return render(request,"index.html")
 
 
+
     
 def singleblog(request):
     return render(request,"single-blog.html")
+
+def sign_in(request):
+    return render(request,"sign_in.html")
+
+
+def sign_up(request):
+    return render(request,"sign_up.html")
+
+
 

@@ -12,4 +12,5 @@ urlpatterns = [
     path('element/', element,name='element'),
     path('index/', index,name='index'),
     path('singleblog/', singleblog,name='singleblog'),
+    
 ]
