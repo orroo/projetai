@@ -18,8 +18,7 @@ from django.contrib import admin
 from django.urls import path , include
 from duration_app import views
 from django.conf import settings            
-from django.conf.urls.static import static  
-
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,8 +34,13 @@ urlpatterns = [
     path('sign_in/', views.sign_in, name='sign_in'),
     path('sign_up/', views.sign_up, name='sign_up'),
     path('face/', include('face.urls')),
+    path('duration/live/', views.live_prediction_view, name='live_prediction'),
+    path('bp/' , include('check_app.urls')),
     path('leak/', include('leakage_detection_app.urls')),
     path('vascular/', include('vascular_monitor.urls')),
+
+    # path('send-notification/', views.send_notification, name='send_notification'),
+    
  
 ]
 if settings.DEBUG:

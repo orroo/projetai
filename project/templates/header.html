@@ -1,5 +1,15 @@
 {% load static %}
  <!--================Header Menu Area =================-->
+ <style>
+    /* In your CSS file */
+.navbar .dropdown-toggle {
+    font-size: 0.9rem;
+}
+
+.navbar .dropdown-menu {
+    font-size: 0.85rem;
+}
+ </style>
  <header class="header_area">
     <div class="top_menu row m0">
         <div class="container">
@@ -35,14 +45,17 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li> 
                         <li class="nav-item"><a class="nav-link" href="{% url 'department' %}">Department</a></li> 
                         <li class="nav-item"><a class="nav-link" href="{% url 'doctors' %}">Doctors</a></li>    
-                        {% comment %} <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{% url 'singleblog' %}">Blog Details</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{% url 'element' %}">element</a></li>
+                        <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-size: 0.9rem;">
+                                <i class="fas fa-chevron-down mr-2"></i> Prediction Models
+                            </a>
+                            <ul class="dropdown-menu" style="font-size: 0.85rem;">
+                                <li class="nav-item"><a class="nav-link" href="{% url 'live_prediction' %}"><i class="fas fa-clock mr-2"></i> Duration Prediction</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'upload_mat' %}"><i class="fas fas fa-stethoscope mr-2"></i> SBP/DBP Prediction</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'vae_upload' %}"><i class="fas fa-heartbeat mr-2"></i> Vascular Risk Prediction</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'leak_form' %}"><i class="fas fa-tint mr-2"></i> Water Leak Detection</a></li>
                             </ul>
-                        </li>  {% endcomment %}
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
                     </ul>
                 </div>

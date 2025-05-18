@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'duration_app',
     'face',
+    'channels',
+    'check_app',
     'leakage_detection_app',
     'vascular_monitor',
+
 ]
 
 MIDDLEWARE = [
@@ -51,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -71,6 +75,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'project.wsgi.application'
+
+
+
+# Optional: In-memory channel layer (good for development)
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
+
+
 
 
 # Database
@@ -125,12 +140,12 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+MEDIA_URL  = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# For file uploads
-import os
-BASE_DIR = Path(__file__).resolve().parent.parent
-MEDIA_URL  = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
