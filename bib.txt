@@ -1,34 +1,8 @@
-pip install django 
-pip install joblib
-pip install pandas
-pip install torch
+flask
+torch
+torchvision
+librosa
+matplotlib
+numpy
 
-pip install scikit-learn
-pip install channels
-pip install websocket
-pip install websocket-client
-pip install daphne
-
-
-
-
-pip install flask 
-pip install requests
-pip install whitenoise
-
-
-
-
-
-
-
-python manage.py makemigrations 
-python manage.py migrate
-
-
-BUT FOR SOCKET FUNCTIONS use 2nd command : 
-            
-            python manage.py runserver 
-            
-            
-            daphne project.asgi:application
+                                                                 
