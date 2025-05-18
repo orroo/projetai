@@ -16,28 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
-from duration_app import views
-from django.conf import settings            
-from django.conf.urls.static import static  
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.sign_in, name='sign_in'),
-    path('home/', views.index, name='index'),
-    path('about/', views.about, name='about'),
-    path('department/', views.department, name='department'),
-    path('doctors/', views.doctors, name='doctors'),
-    path('blog/', views.blog, name='blog'),
-    path('singleblog/', views.singleblog, name='singleblog'),
-    path('contact/', views.contact, name='contact'),
-    path('element/', views.element, name='element'),
-    path('sign_in/', views.sign_in, name='sign_in'),
-    path('sign_up/', views.sign_up, name='sign_up'),
-    path('face/', include('face.urls')),
-    path('leak/', include('leakage_detection_app.urls')),
-    path('vascular/', include('vascular_monitor.urls')),
- 
+    path('' , include('duration_app.urls'))
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

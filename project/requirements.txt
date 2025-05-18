@@ -1,7 +1,0 @@
-Django>=4.2
-torch
-torchvision
-librosa
-matplotlib
-numpy
-torchaudio 
