@@ -1,0 +1,490 @@
+{% load static %}
+{% include "css.html" %}
+<body>
+
+    {% include "header.html" %}
+   
+
+    {% include "banner.html" %}
+
+    <div class="container">
+        <h1 class="mb-4 text-center">Dialysis Session Data Entry</h1>
+        <form id="dialysisForm">
+
+            <!-- Patient Info -->
+            <fieldset class="border p-3 mb-4">
+                <legend class="w-auto">Patient Info</legend>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" class="form-control" required>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Birthdate</label>
+                    <input type="number" id="birthday" name="birthday" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="first_dialysis">First Dialysis</label>
+                    <input type="date" id="first_dialysis" name="first_dialysis" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" step="1" id="age" name="age" class="form-control">
+                </div>
+            </fieldset>
+
+            <!-- Session Timing -->
+            <fieldset class="border p-3 mb-4">
+                <legend class="w-auto">Session Timing</legend>
+                <div class="form-group">
+                    <label for="keyindate">Key In Date</label>
+                    <input type="datetime-local" id="keyindate" name="keyindate" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="dialysisstart">Dialysis Start</label>
+                    <input type="datetime-local" id="dialysisstart" name="dialysisstart" class="form-control">
+                </div>
+            </fieldset>
+
+            <!-- Vitals -->
+            <fieldset class="border p-3 mb-4">
+                <legend class="w-auto">Vitals</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="sbp">SBP</label>
+                        <input type="number" step="0.1" id="sbp" name="sbp" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="dbp">DBP</label>
+                        <input type="number" step="0.1" id="dbp" name="dbp" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="temperature">Temperature</label>
+                        <input type="number" step="0.1" id="temperature" name="temperature" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="pulse">Pulse</label>
+                        <input type="number" id="pulse" name="pulse" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="respiratory_rate">Respiratory Rate</label>
+                        <input type="number" id="respiratory_rate" name="respiratory_rate" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="blood_oxygen_lvl">Oxygen Level (%)</label>
+                        <input type="number" step="0.1" id="blood_oxygen_lvl" name="blood_oxygen_lvl" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="glucose_lvl">Glucose Level</label>
+                        <input type="number" step="0.1" id="glucose_lvl" name="glucose_lvl" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="hypotension">Hypotension (0/1)</label>
+                        <input type="number" id="hypotension" name="hypotension" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="DM">DM (0/1)</label>
+                        <input type="number" id="DM" name="DM" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="conductivity">Conductivity</label>
+                        <input type="number" step="0.1" id="conductivity" name="conductivity" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="uf">UF</label>
+                        <input type="number" step="0.1" id="uf" name="uf" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="blood_flow">Blood Flow</label>
+                        <input type="number" id="blood_flow" name="blood_flow" class="form-control">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Weights -->
+            <fieldset class="border p-3 mb-4">
+                <legend class="w-auto">Weights</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="weightstart">Weight Start</label>
+                        <input type="number" step="0.1" id="weightstart" name="weightstart" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="weightend">Weight End</label>
+                        <input type="number" step="0.1" id="weightend" name="weightend" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="dryweight">Dry Weight</label>
+                        <input type="number" step="0.1" id="dryweight" name="dryweight" class="form-control">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Machine Settings -->
+            <fieldset class="border p-3 mb-4">
+                <legend class="w-auto">Machine Settings</legend>
+
+                <div class="form-group">
+                    <label for="dialyzer">Dialyzer</label>
+                    <input type="text" id="dialyzer" name="dialyzer" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="bath">Bath</label>
+                    <input type="text" id="bath" name="bath" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="technique">Technique</label>
+                    <input type="text" id="technique" name="technique" class="form-control">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="gain">Gain</label>
+                        <input type="number" step="0.1" id="gain" name="gain" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="bath_temperature">Bath Temperature</label>
+                        <input type="number" step="0.1" id="bath_temperature" name="bath_temperature" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="replacement_Volume">Replacement Volume</label>
+                        <input type="number" step="0.1" id="replacement_Volume" name="replacement_Volume" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="kt">kt</label>
+                        <input type="number" step="0.1" id="kt" name="kt" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="Bath_Flow">Bath Flow</label>
+                        <input type="number" id="Bath_Flow" name="Bath_Flow" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="bicarbonate_conductivity">Bicarbonate Conductivity</label>
+                        <input type="number" step="0.1" id="bicarbonate_conductivity" name="bicarbonate_conductivity" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="arterial_Pressure">Arterial Pressure</label>
+                        <input type="number" step="0.1" id="arterial_Pressure" name="arterial_Pressure" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="Venous_Pressure">Venous Pressure</label>
+                        <input type="number" step="0.1" id="Venous_Pressure" name="Venous_Pressure" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="transmembrane_Pressure">Transmembrane Pressure</label>
+                        <input type="number" step="0.1" id="transmembrane_Pressure" name="transmembrane_Pressure" class="form-control">
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button id="refresh" type="button" class="btn btn-secondary">Refresh</button>
+                <button id="notify-btn" type="button" class="btn btn-warning">Notification</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+
+
+
+
+    <script>
+        let socket = new WebSocket("ws://localhost:8000/ws/predict/");
+
+        socket.onopen = function(e) {
+            console.log("WebSocket connected");
+
+        };
+
+
+        document.getElementById("dialysisForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const formObj = {};
+            formData.forEach((value, key) => formObj[key] = value);
+
+            socket.send(JSON.stringify({ input: formObj }));
+        });
+
+        document.getElementById("refresh").addEventListener("click", function(e) {
+            socket.close()
+            socket = new WebSocket("ws://localhost:8000/ws/predict/");
+
+            socket.onclose = function(event) {
+                console.log("WebSocket connection closed.");
+            };
+
+
+            socket.onmessage = function(event) {
+                console.log('msg received')
+                const data = JSON.parse(event.data);
+                console.log(data)
+                document.getElementById("duration").textContent =  Math.round(data.duration);
+                document.getElementById("frequency").textContent = Math.round(data.frequency*100)/100;
+            };
+        });
+
+
+        socket.onmessage = function(event) {
+            console.log('msg received')
+            const data = JSON.parse(event.data);
+            console.log(data);
+            minutes =Math.round(data.duration);
+            if (!isNaN(minutes)) {
+                const hours = minutes / 60;
+                const rest_minutes = minutes % 60;
+
+                document.getElementById("duration").textContent =  `${minutes} minutes = ${hours.toFixed(0)} hours and ${rest_minutes.toFixed(0)} minutes`;
+                // document.getElementById('result').textContent = 
+            } else {
+                 document.getElementById('result').textContent = "";
+            }
+            // document.getElementById("duration").textContent =  Math.round(data.duration);
+            document.getElementById("frequency").textContent = Math.round(data.frequency*100)/100;
+        };
+
+        socket.onclose = function(event) {
+            console.log("WebSocket connection closed.");
+        };
+
+
+
+
+
+        const socket2 = new WebSocket('ws://localhost:8000/ws/notifications/');
+
+        socket2.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            alert(data.message);  // Replace with your own UI update
+        };
+
+        function sendMessage(message) {
+          
+            console.log('processed')
+            socket2.send(JSON.stringify({ message: message }));
+        }
+        
+        document.getElementById("notify-btn").addEventListener("click", function() {
+            // Call Django view (via Ajax or fetch) to trigger the notification
+            // fetch('/send-notification/', {
+            //     method: 'POST',
+            //     headers: {
+            //         'X-CSRFToken': '{{ csrf_token }}',  // Add this if using Django templates
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({ message: 'Hello from the button!' })
+            // });
+            console.log('pressed')
+            sendMessage('test');
+        });
+         
+
+
+        let socket3 = new WebSocket("ws://localhost:8000/ws/upload/");
+
+        
+        socket3.onopen = function(e) {
+            console.log("WebSocket connected");
+            message = 'hello'
+            socket3.send(JSON.stringify({ message: message }));
+        
+            
+        };
+
+
+        document.getElementById("refresh").addEventListener("click", function(e) {
+            socket3.close()
+            socket3 = new WebSocket("ws://localhost:8000/ws/upload/");
+
+            socket3.onclose = function(event) {
+                console.log("WebSocket connection closed.");
+            };
+
+
+            socket3.onmessage = function(event) {
+            console.log('msg received')
+            const msgdata = JSON.parse(event.data);
+            const data = msgdata.message[0];
+            console.log(data)
+
+            console.log(data.datatime);
+            console.log(data.sbp);
+            console.log(data.dbp);
+            console.log(data.temperature);
+            console.log(data.conductivity);
+            console.log(data.uf);
+            console.log(data.blood_flow);
+            console.log(data.gender);
+            console.log(data.birthday);
+            console.log(new Date(data.first_dialysis));
+
+            document.getElementById("first_dialysis").value = new Date(data.first_dialysis).toISOString().slice(0, 10) ;
+            document.getElementById("keyindate").value = new Date(data.keyindate).toISOString().slice(0, 16) ;
+
+            var d = new Date();
+            d.setHours(data.dialysisstart.slice(0,2));
+            d.setMinutes(data.dialysisstart.slice(3,5));
+            console.log(d);
+            console.log(data.dialysisstart.slice(0,2));
+            console.log(data.dialysisstart.slice(3,5));
+            
+
+            document.getElementById("dialysisstart").value = d.toISOString().slice(0, 16) ;
+            document.getElementById ("sbp").value = data.sbp;
+            document.getElementById("dbp").value = data.dbp;
+            document.getElementById("temperature").value = data.temperature;
+            document.getElementById("conductivity").value = data.conductivity;
+            document.getElementById("uf").value = data.uf;
+            document.getElementById("blood_flow").value = data.blood_flow;
+            if (data.gender == 2) {
+            document.getElementById("gender").selectIndex = 2;
+            }
+            else  {
+            document.getElementById("gender").selectIndex = 1;
+            }
+
+
+
+            document.getElementById("birthday").value = data.birthday;
+            document.getElementById("DM").value = data.DM;
+            document.getElementById("weightstart").value = data.weightstart;
+            document.getElementById("weightend").value = data.weightend;
+            document.getElementById("dryweight").value = data.dryweight;
+            document.getElementById("pulse").value = data.pulse;
+            document.getElementById("respiratory_rate").value = data.respiratory_rate;
+            document.getElementById("blood_oxygen_lvl").value = data.blood_oxygen_lvl;
+            document.getElementById("glucose_lvl").value = data.glucose_lvl;
+            if (data.hypotension == "NO") {
+            document.getElementById("hypotension").value = 0;
+            }
+            else  {
+            document.getElementById("hypotension").value = 1;
+            }
+
+            document.getElementById("age").value = data.age;
+            document.getElementById("dialyzer").value = data.dialyzer;
+            document.getElementById("bath").value = data.bath;
+            document.getElementById("technique").value = data.technique;
+            document.getElementById("gain").value = data.gain;
+            document.getElementById("bath_temperature").value = data.bath_temperature;
+            document.getElementById("replacement_Volume").value = data.replacement_Volume;
+            document.getElementById("kt").value = data.kt;
+            document.getElementById("Bath_Flow").value = data.Bath_Flow;
+            document.getElementById("bicarbonate_conductivity").value = data.bicarbonate_conductivity;
+            document.getElementById("arterial_Pressure").value = data.arterial_Pressure;
+            document.getElementById("Venous_Pressure").value = data.Venous_Pressure;
+            document.getElementById("transmembrane_Pressure").value = data.transmembrane_Pressure;
+            
+        };
+        });
+
+
+        socket3.onmessage = function(event) {
+            console.log('msg received')
+            const msgdata = JSON.parse(event.data);
+            const data = msgdata.message[0];
+            console.log(data)
+
+
+            document.getElementById("first_dialysis").value = new Date(data.first_dialysis).toISOString().slice(0, 10) ;
+            document.getElementById("keyindate").value = new Date(data.keyindate).toISOString().slice(0, 16) ;
+
+            var d = new Date();
+            d.setHours(data.dialysisstart.slice(0,2));
+            d.setMinutes(data.dialysisstart.slice(3,5));
+            console.log(d);
+            console.log(data.dialysisstart.slice(0,2));
+            console.log(data.dialysisstart.slice(3,5));
+            
+
+            document.getElementById("dialysisstart").value = d.toISOString().slice(0, 16) ;
+            document.getElementById ("sbp").value = data.sbp;
+            document.getElementById("dbp").value = data.dbp;
+            document.getElementById("temperature").value = data.temperature;
+            document.getElementById("conductivity").value = data.conductivity;
+            document.getElementById("uf").value =  Math.round(data.uf*10)/10;
+            document.getElementById("blood_flow").value = data.blood_flow;
+            if (data.gender == 2) {
+            document.getElementById("gender").value = 0;
+            }
+            else  {
+            document.getElementById("gender").value = 1;
+            }
+
+
+
+            document.getElementById("birthday").value = data.birthday;
+            document.getElementById("DM").value = data.DM;
+
+// /*************  ✨ Windsurf Command ⭐  *************/
+// document.getElementById("rounded_value").value = Math.round(data.someNumber);
+
+// /*******  e30da7fb-1795-4813-9e1d-e6df5044b174  *******/
+            document.getElementById("weightstart").value = Math.round(data.weightstart*10)/10;
+            document.getElementById("weightend").value =  Math.round(data.weightend*10)/10;
+            document.getElementById("dryweight").value = data.dryweight;
+            document.getElementById("pulse").value = data.pulse;
+            document.getElementById("respiratory_rate").value = data.respiratory_rate;
+            document.getElementById("blood_oxygen_lvl").value = data.blood_oxygen_lvl;
+            document.getElementById("glucose_lvl").value = data.glucose_lvl;
+            if (data.hypotension == "NO") {
+            document.getElementById("hypotension").value = 0;
+            }
+            else  {
+            document.getElementById("hypotension").value = 1;
+            }
+
+            document.getElementById("age").value = data.age;
+            document.getElementById("dialyzer").value = data.dialyzer;
+            document.getElementById("bath").value = data.bath;
+            document.getElementById("technique").value = data.technique;
+            document.getElementById("gain").value = data.gain;
+            document.getElementById("bath_temperature").value = data.bath_temperature;
+            document.getElementById("replacement_Volume").value = Math.round(data.replacement_Volume*10)/10;
+            document.getElementById("kt").value = data.kt;
+            document.getElementById("Bath_Flow").value = data.Bath_Flow;
+            document.getElementById("bicarbonate_conductivity").value = data.bicarbonate_conductivity;
+            document.getElementById("arterial_Pressure").value = data.arterial_Pressure;
+            document.getElementById("Venous_Pressure").value = data.Venous_Pressure;
+            document.getElementById("transmembrane_Pressure").value = data.transmembrane_Pressure;
+            
+        };
+
+        socket3.onclose = function(event) {
+            console.log("WebSocket connection closed.");
+        };
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <h1>Live Prediction</h1>
+    <p><strong>Predicted Duration:</strong> <span id="duration">Waiting...</span></p>
+    <p><strong>Predicted Frequency:</strong> <span id="frequency">Waiting...</span></p>
+</body>
+</html>
