@@ -1,8 +1,0 @@
-flask
-torch
-torchvision
-librosa
-matplotlib
-numpy
-
-                                                                 
